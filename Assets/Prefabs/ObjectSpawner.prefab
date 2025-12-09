@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9051693474922089138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5402169130751478225}
+  - component: {fileID: 6524814720771865554}
+  m_Layer: 0
+  m_Name: ObjectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5402169130751478225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051693474922089138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6524814720771865554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051693474922089138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a246bfa45f2df4d935248f0e01d188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnObjectsScript
+  markerGifPrefab: {fileID: 3992066318849169023, guid: c169bcba3dd1fd14081d078681842a01,
+    type: 3}
+  markerVideoPrefab: {fileID: 5870611872996072255, guid: 16f9385e4ab8fdf42b5dbadbaff48257,
+    type: 3}
+  gifPrefab: {fileID: 1373073336138787099, guid: 502a80720c6326c46b63ea207c04824c,
+    type: 3}
+  GLBPrefab: {fileID: 6447124904091917113, guid: 3635fefd374c1c542bc3f888b53a2dea,
+    type: 3}
+  videoPrefab: {fileID: 8236347705516286775, guid: 7ed56a6b785260440999050f442a4130,
+    type: 3}
+  soundPrefab: {fileID: 262777979356656762, guid: 4cfe702ccc5fb4f41aad86734a286c23,
+    type: 3}
+  soundComponentPrefab: {fileID: 956741294251292952, guid: 1e6e5e9a798707742b4528cbf3447602,
+    type: 3}
