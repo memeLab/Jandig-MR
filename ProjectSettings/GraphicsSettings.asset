@@ -34,36 +34,39 @@ GraphicsSettings:
   - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10783, guid: 0000000000000000f000000000000000, type: 0}
-  m_PreloadedShaders: []
-  m_PreloadShadersBatchTimeLimit: -1
-  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_CustomRenderPipeline: {fileID: 0}
+  - {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_PreloadedShaders:
+  - {fileID: 20000000, guid: 79f8c5cfbb8a7764cb2404bd02d09cc5, type: 2}
+  m_PreloadShadersBatchTimeLimit: 0
+  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
+    type: 0}
+  m_CustomRenderPipeline: {fileID: 11400000, guid: 7b7fd9122c28c4d15b667c7040e3b3fd,
+    type: 2}
   m_TransparencySortMode: 0
   m_TransparencySortAxis: {x: 0, y: 0, z: 1}
   m_DefaultRenderingPath: 1
   m_DefaultMobileRenderingPath: 1
   m_TierSettings: []
-  m_LightmapStripping: 0
-  m_FogStripping: 0
-  m_InstancingStripping: 0
+  m_LightmapStripping: 1
+  m_FogStripping: 1
+  m_InstancingStripping: 2
   m_BrgStripping: 0
-  m_LightmapKeepPlain: 1
-  m_LightmapKeepDirCombined: 1
-  m_LightmapKeepDynamicPlain: 1
-  m_LightmapKeepDynamicDirCombined: 1
-  m_LightmapKeepShadowMask: 1
-  m_LightmapKeepSubtractive: 1
-  m_FogKeepLinear: 1
-  m_FogKeepExp: 1
-  m_FogKeepExp2: 1
+  m_LightmapKeepPlain: 0
+  m_LightmapKeepDirCombined: 0
+  m_LightmapKeepDynamicPlain: 0
+  m_LightmapKeepDynamicDirCombined: 0
+  m_LightmapKeepShadowMask: 0
+  m_LightmapKeepSubtractive: 0
+  m_FogKeepLinear: 0
+  m_FogKeepExp: 0
+  m_FogKeepExp2: 0
   m_AlbedoSwatchInfos: []
   m_RenderPipelineGlobalSettingsMap:
-    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: b82bc16cc538c0449adc37d4170bc4aa, type: 2}
-  m_ShaderBuildSettings:
-    keywordDeclarationOverrides: []
-  m_LightsUseLinearIntensity: 0
-  m_LightsUseColorTemperature: 0
+    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 18dc0cd2c080841dea60987a38ce93fa,
+      type: 2}
+  m_LightsUseLinearIntensity: 1
+  m_LightsUseColorTemperature: 1
   m_LogWhenShaderIsCompiled: 0
-  m_LightProbeOutsideHullStrategy: 1
+  m_LightProbeOutsideHullStrategy: 0
   m_CameraRelativeLightCulling: 0
   m_CameraRelativeShadowCulling: 0
