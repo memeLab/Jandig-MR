@@ -5,9 +5,10 @@ Logging in and opening the exhibit
 2. Log in
    - create an user at **https://dev.jandig.app/users/signup/**
 3. In the main menu, go to **Remix Exhibit**.​
-4. Select **Remix MR Exhibit** to see all available mixed reality exhibitions.​
-5. Choose the exhibition called **CheckAll**.​
-6. Choose a name for your narrative.
+![Untitled](https://github.com/user-attachments/assets/9cc41993-a394-48a0-9706-afc25589d12a)
+5. Select **Remix MR Exhibit** to see all available mixed reality exhibitions.​
+6. Choose the exhibition called **CheckAll**.​
+7. Choose a name for your narrative.
 
 # Editing the objects
 1. Wait for the exhibition to load and for the objects to appear.
