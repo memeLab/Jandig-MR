@@ -11,11 +11,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bfde92e0a2190c4ca32f6fb0a0c73ce, type: 3}
   m_Name: MetaXRProjectSettings
-  m_EditorClassIdentifier: Meta.XR.Editor.Settings::Meta.XR.Editor.Settings.ProjectSettings
+  m_EditorClassIdentifier: 
   boolProperties:
     keys:
+    - Meta.XR.SDK.UsageSettings.UsesBuildingBlocks
+    - Meta.XR.SDK.UsageSettings.UsesXRSimulator
     - Meta.XR.SDK.UsageSettings.UsesProjectSetupTool
-    values: 01
+    values: 010101
   intProperties:
     keys: []
     values: 
