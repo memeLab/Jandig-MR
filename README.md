@@ -8,7 +8,7 @@
 <img src="https://github.com/user-attachments/assets/9cc41993-a394-48a0-9706-afc25589d12a" width="400">
 
 6. Select **Remix MR Exhibit** to see all available mixed reality exhibitions.​
-7. Choose the exhibition called **CheckAll**.​
+7. Choose the exhibition called **allAt20251220**.​
 8. Choose a name for your narrative.
 
 ### Editing the Objects
