@@ -1,7 +1,7 @@
 # Jandig MR
 ## Quickstart Guide
 ### Logging in and opening the exhibit
-1. Create an user at https://dev.jandig.app/users/signup/
+1. Create an user at https://jandig.app/users/signup/
 2. Open the Jandig MR app.​
 3. Log in with your credentials
 4. In the main menu, go to **Remix Exhibit**.​
