@@ -66,12 +66,11 @@ public class LoginHandler : MonoBehaviour
 
     private IEnumerator sendLoginPostRequest(LoginForm loginForm)
     {
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         string loginFormJson = JsonUtility.ToJson(loginForm);
         Debug.Log(loginFormJson);
         byte[] payload = Encoding.UTF8.GetBytes(loginFormJson);
         
-        UnityWebRequest request = new UnityWebRequest("https://dev.jandig.app/api/v1/auth/login/", "POST");
+        UnityWebRequest request = new UnityWebRequest("https://jandig.app/api/v1/auth/login/", "POST");
 
         request.uploadHandler = new UploadHandlerRaw(payload);
         request.downloadHandler = new DownloadHandlerBuffer();

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class ExhibitControllerScript : MonoBehaviour
 {
     [SerializeField]
-    public string url = "https://dev.jandig.app/api/v1/exhibits/1/";
+    public string url = "https://jandig.app/api/v1/exhibits/1/";
 
     private SpawnObjectsScript objectSpawner;
     public bool shouldSave = false;

@@ -14,8 +14,9 @@ public class SoundController : MonoBehaviour
     public string m_url;
 
     [SerializeField]
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
 
+    protected bool shouldPlayOnLoad = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -100,14 +101,15 @@ public class SoundController : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("Audio file load error: " + request.error);
+            Debug.LogError("Audio file load error"+ uri +": " + request.error);
             yield break;
         }
 
         // Create AudioClip from downloaded data
         AudioClip audioClip = DownloadHandlerAudioClip.GetContent(request);
         audioSource.clip = audioClip;
-        audioSource.Play();
+        if (shouldPlayOnLoad)
+            audioSource.Play();
 
     }
 

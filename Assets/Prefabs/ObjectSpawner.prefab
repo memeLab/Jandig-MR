@@ -58,3 +58,5 @@ MonoBehaviour:
     type: 3}
   soundComponentPrefab: {fileID: 956741294251292952, guid: 1e6e5e9a798707742b4528cbf3447602,
     type: 3}
+  audioDescriptionComponentPrefab: {fileID: 956741294251292952, guid: fc9d81d1caebf8b489bbf575d6fa0fbb,
+    type: 3}

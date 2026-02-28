@@ -80,6 +80,20 @@ ShaderVariantCollection:
         passType: 0
       - keywords: _VOLUME_TRANSMISSION_ON
         passType: 0
+      - keywords: _TEXTURE_TRANSFORM_ON
+        passType: 0
+      - keywords: _TEXTURE_TRANSFORM_ON _VOLUME_TRANSMISSION_ANDDISPERSION
+        passType: 0
+      - keywords: _TEXTURE_TRANSFORM_ON _VOLUME_TRANSMISSION_ANDDISPERSION _VOLUME_TRANSMISSION_ON
+        passType: 0
+      - keywords: _TEXTURE_TRANSFORM_ON _VOLUME_TRANSMISSION_ON
+        passType: 0
+      - keywords: _VOLUME_TRANSMISSION_ANDDISPERSION
+        passType: 0
+      - keywords: _VOLUME_TRANSMISSION_ANDDISPERSION _VOLUME_TRANSMISSION_ON
+        passType: 0
+      - keywords: _VOLUME_TRANSMISSION_ON
+        passType: 0
   - first: {fileID: -6465566751694194690, guid: 59541e6caf586ca4f96ccf48a4813a51,
       type: 3}
     second:

@@ -23,7 +23,7 @@ public class RemixARExhibitButtonController : MonoBehaviour
     }
     public void OnRemixARExhibitButtonClick()
     {
-        onRemixARExhibitNextScreen.GetComponent<ListARExhibitsController>().Activate("https://dev.jandig.app/api/v1/exhibits/");
+        onRemixARExhibitNextScreen.GetComponent<ListARExhibitsController>().Activate("https://jandig.app/api/v1/exhibits/");
         parentScreen.SetActive(false);
     }
 }

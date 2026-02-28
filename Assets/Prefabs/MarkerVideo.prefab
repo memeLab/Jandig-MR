@@ -163,6 +163,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 7944549152081747272}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
+  _forceKinematicDisabled: 0
 --- !u!114 &6948660335324023495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,8 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactorFilters: []
-  _maxInteractors: -1
-  _maxSelectingInteractors: -1
+  _maxInteractors: 1
+  _maxSelectingInteractors: 1
   _data: {fileID: 0}
   _pointableElement: {fileID: 7098925829090117254}
   _rigidbody: {fileID: 7944549152081747272}
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 0}
   _customIcon: {fileID: 2800000, guid: aa3a2b3718100f84fb5d8ff9adb8ccb7, type: 3}
-  _snappiness: 1
+  _snappiness: 0.5
 --- !u!1001 &2832208645268415228
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class RemixOwnExhibitButtonController : MonoBehaviour
     }
 
     private void OnRemixOwnExhibitButtonClick() {
-        onRemixOwnExhibitNextScreen.GetComponent<ListARExhibitsController>().Activate("https://dev.jandig.app/api/v1/exhibits/?owner=" + userInfo.user_profile_id);
+        onRemixOwnExhibitNextScreen.GetComponent<ListARExhibitsController>().Activate("https://jandig.app/api/v1/exhibits/?owner=" + userInfo.user_profile_id);
         parentScreen.SetActive(false);
     }
 }

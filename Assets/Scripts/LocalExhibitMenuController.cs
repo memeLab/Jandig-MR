@@ -1,8 +1,6 @@
 ﻿using ExhibitClasses;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -157,7 +155,7 @@ public class LocalExhibitMenuController : MonoBehaviour
             return;
         }
 
-        script.url = "https://dev.jandig.app/api/v1/exhibits/" + this.exhibit.id + "/";
+        script.url = "https://jandig.app/api/v1/exhibits/" + this.exhibit.id + "/";
         script.shouldSave = true;
         Debug.Log($"URL definida no ExhibitControllerScript: {script.url}");
     }
@@ -165,13 +163,12 @@ public class LocalExhibitMenuController : MonoBehaviour
 
     public void onSaveButton()
     {
-        // chamada sem await — mantém comportamento anterior
-        _ = createAndSaveSpatialAnchors(true);
+        ArtworkData[] artworks = LocalExhibitManager.getCurrentUpdatedArtworkData();
+        LocalExhibitManager.saveLocalExhibit(artworks, this.exhibit.name, this.exhibit.slug);
     }
-    public async void onSaveExitButton()
+    public void onSaveExitButton()
     {
-        // Aguarda createAndSaveSpatialAnchors terminar antes de continuar
-        await createAndSaveSpatialAnchors(false);
+        onSaveButton();
         onExitWithoutSaveButton();
     }
     public void onExitWithoutSaveButton()
@@ -191,32 +188,6 @@ public class LocalExhibitMenuController : MonoBehaviour
         SpawnObjectsScript.OpenLocalExhibit(objectSpawner, exhibitEntry);
         ObjectVisibilityController.DisableEditorComponents();
     }
-    public async Task createAndSaveSpatialAnchors(bool remove_anchors_after_save = true)
-    {
-        GameObject[] all_artworks = GameObject.FindGameObjectsWithTag("Artwork");
-        foreach (GameObject artwork in all_artworks)
-        {
-            OVRSpatialAnchor anchor = artwork.AddComponent<OVRSpatialAnchor>();
-            await anchor.WhenLocalizedAsync();
-            ArtworkDataController controller = artwork.GetComponent<ArtworkDataController>();
-            ArtworkData data = controller.GetArtworkData();
-            data.anchor_uuid = anchor.Uuid.ToString();
-            controller.SetArtworkData(data);
-        }
 
-        ArtworkData[] artworks = LocalExhibitManager.getCurrentUpdatedArtworkData();
-        LocalExhibitManager.saveLocalExhibit(artworks, this.exhibit.name, this.exhibit.slug);
-        if (remove_anchors_after_save)
-        {
-            foreach (GameObject artwork in all_artworks)
-            {
-                OVRSpatialAnchor anchor = artwork.GetComponent<OVRSpatialAnchor>();
-                if (anchor != null)
-                {
-                    Destroy(anchor);
-                }
-            }
-        }
-    }
 
 }

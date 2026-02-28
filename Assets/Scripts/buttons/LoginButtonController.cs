@@ -85,7 +85,7 @@ public class LoginButtonController : MonoBehaviour
 
         byte[] payload = Encoding.UTF8.GetBytes(JsonUtility.ToJson(loginForm));
 
-        UnityWebRequest request = new UnityWebRequest("https://dev.jandig.app/api/v1/auth/login/", "POST");
+        UnityWebRequest request = new UnityWebRequest("https://jandig.app/api/v1/auth/login/", "POST");
         request.timeout = 20; // Set timeout to 30 seconds
 
         request.uploadHandler = new UploadHandlerRaw(payload);

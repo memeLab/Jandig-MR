@@ -26,14 +26,6 @@ public class ObjectVisibilityController : MonoBehaviour
         {
             o.SetActive(true);
         }
-        foreach (GameObject artwork in active_artworks)
-        {
-            OVRSpatialAnchor spatial_anchor = artwork.GetComponent<OVRSpatialAnchor>();
-            if (spatial_anchor != null)
-            {
-                Destroy(spatial_anchor);
-            }
-        }
         is_editing = true;
     }
     public static void DisableEditorComponents()
@@ -44,11 +36,9 @@ public class ObjectVisibilityController : MonoBehaviour
         }
         is_editing = false;
     }
-
     public static void registerEditableObject(GameObject obj)
     {
         if (obj == null) return;
-
         List<GameObject> children = new List<GameObject>();
         obj.GetChildGameObjects(children);
         foreach (GameObject child in children) { 

@@ -63,11 +63,11 @@ public class Object3DController : MonoBehaviour
         string dir = Path.GetDirectoryName(path);
         Debug.Log("Directory: " + dir);
         var importOpt = new UnityGLTF.ImportOptions();
-//#if UNITY_EDITOR
-        //importOpt.AnimationMethod = UnityGLTF.AnimationMethod.Mecanim;
-//#else
+#if UNITY_EDITOR
+        importOpt.AnimationMethod = UnityGLTF.AnimationMethod.Mecanim;
+#else
         importOpt.AnimationMethod = UnityGLTF.AnimationMethod.Legacy;
-//#endif
+#endif
         importOpt.DataLoader = new UnityGLTF.Loader.UnityWebRequestLoader(dir);
         Debug.Log("Created ImportOptions and DataLoader.");
         var import = new GLTFSceneImporter(filename, importOpt);
@@ -84,11 +84,11 @@ public class Object3DController : MonoBehaviour
             Debug.Log("Cena GLTF carregada com sucesso.");
             // Define o mesmo parent do GameObject que possui este script
             scene.transform.SetParent(parent_transform, worldPositionStays: false);
-//#if !UNITY_EDITOR
+#if !UNITY_EDITOR
             Debug.Log("Playing Animation manually on legacy mode.");
             Animation anim = scene.GetComponent <Animation>();
             anim.Play();
-//#endif
+#endif
             Debug.Log("Objeto 3d Posicionado com sucesso");
         };         
         StartCoroutine(import.LoadSceneAsync(onLoadComplete: onLoadComplete).AsCoroutine());

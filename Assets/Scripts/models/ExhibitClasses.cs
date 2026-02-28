@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
-using static OVRSpatialAnchor;
+using System.Collections.Generic;
 namespace ExhibitClasses
 {
     public enum ArtworkType
@@ -21,16 +20,9 @@ namespace ExhibitClasses
         public string markerUrl;  // Optional (only for marker-based artworks)
         public string audioDescriptionUrl; // Optional audio description URL
         public string soundUrl; // Optional sound URL for extra object sounds. E.g., glb with sound effects
-        public string anchor_uuid;
         public Vector3 position;
         public Quaternion rotation;
         public Vector3 scale;
-    }
-    public class UnboundObjectAnchor
-    {
-        public UnboundAnchor anchor;
-        public GameObject anchored_object;
-
     }
     [System.Serializable]
     public class ExhibitInfo

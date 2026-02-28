@@ -20,9 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Samples/TestBlocks.unity
     guid: 0ea46d5f058dbe94d9290e0ed47a5cc8
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/SpatialAnchor.unity
-    guid: 1db179c458352bf46beb307fd047d589
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 767f23bac5964ae4babaa8cf3e0a410a,
       type: 2}
