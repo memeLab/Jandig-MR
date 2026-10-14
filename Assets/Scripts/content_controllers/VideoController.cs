@@ -30,6 +30,9 @@ public class VideoController : MonoBehaviour
     [SerializeField]
     public GameObject m_video_backplate;
 
+    private RenderTexture m_render_texture;
+    private Material m_video_material;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +85,7 @@ public class VideoController : MonoBehaviour
         {
             RenderTexture renderTexture = new RenderTexture(1024, 1024, 0);
             renderTexture.Create();
+            m_render_texture = renderTexture;
             m_video_player.targetTexture = renderTexture;
 
             GameObject backplate = Instantiate(m_video_backplate, Vector3.zero, Quaternion.identity);
@@ -92,6 +96,7 @@ public class VideoController : MonoBehaviour
                 Debug.LogError("Video Shader not found!!!!");
             }
             Material videoMat = new (shader);
+            m_video_material = videoMat;
             backplate.GetComponent<Renderer>().material = videoMat;
             backplate.GetComponent<Renderer>().material.mainTexture = renderTexture;
             m_video_player.url = path;
@@ -107,6 +112,28 @@ public class VideoController : MonoBehaviour
         else
         {
             Debug.LogError("Video file does not exist at path: " + path);
+        }
+    }
+
+    // The RenderTexture and the material are created at runtime and outlive the
+    // GameObject unless released here, so each video opened used to leak them.
+    private void OnDestroy()
+    {
+        if (m_video_player != null)
+        {
+            m_video_player.Stop();
+            m_video_player.targetTexture = null;
+        }
+        if (m_render_texture != null)
+        {
+            m_render_texture.Release();
+            Destroy(m_render_texture);
+            m_render_texture = null;
+        }
+        if (m_video_material != null)
+        {
+            Destroy(m_video_material);
+            m_video_material = null;
         }
     }
 }
