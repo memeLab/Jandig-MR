@@ -39,9 +39,19 @@ public class LocalExhibitManager : MonoBehaviour
         }
     }
 
-    public static void persistToDisk(LocalExhibits localExhibits)
+    public static bool persistToDisk(LocalExhibits localExhibits)
     {
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/localExhibits.json", JsonUtility.ToJson(localExhibits));
+        string path = Path.Combine(Application.persistentDataPath, "localExhibits.json");
+        try
+        {
+            File.WriteAllText(path, JsonUtility.ToJson(localExhibits));
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error saving local exhibits to " + path + ": " + ex.Message);
+            return false;
+        }
     }
     public static ArtworkData[] getCurrentUpdatedArtworkData()
     {
@@ -63,7 +73,7 @@ public class LocalExhibitManager : MonoBehaviour
 
         return artworks;
     }
-    public static void saveLocalExhibit(ArtworkData[] artworks, string name, string slug)
+    public static bool saveLocalExhibit(ArtworkData[] artworks, string name, string slug)
     {
         LocalExhibits localExhibits = loadLocalExhibits();
         ExhibitInfo exhibitInfo = new ExhibitInfo
@@ -76,13 +86,13 @@ public class LocalExhibitManager : MonoBehaviour
             key = slug,
             value = exhibitInfo
         });
-        persistToDisk(localExhibits);
+        return persistToDisk(localExhibits);
     }
-    public static void saveDefaultLocalExhibit(string exhibitSlug)
+    public static bool saveDefaultLocalExhibit(string exhibitSlug)
     {
         LocalExhibits localExhibits = loadLocalExhibits();
         localExhibits.defaultExhibitSlug = exhibitSlug;
-        persistToDisk(localExhibits);
+        return persistToDisk(localExhibits);
     }
     public static void loadLocalExhibit(string exhibitSlug)
     {

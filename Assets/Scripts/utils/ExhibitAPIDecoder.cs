@@ -29,9 +29,16 @@ public class ExhibitAPIDecoder : MonoBehaviour
         {
             string source = augmented["source"].ToString();
 
+            ArtworkType? type = DetermineAugmentedType(source);
+            if (type == null)
+            {
+                Debug.LogWarning("Skipping object with unsupported type: " + source);
+                continue;
+            }
+
             ArtworkData artworkData = new ArtworkData();
             artworkData.sourceUrl = source;
-            artworkData.type = DetermineAugmentedType(source);
+            artworkData.type = type.Value;
 
             if (augmented["audio_description"].Type != JTokenType.Null)
             {
@@ -56,7 +63,13 @@ public class ExhibitAPIDecoder : MonoBehaviour
             artworkData.sourceUrl = artwork["augmented"]["source"].ToString();
             artworkData.markerUrl = artwork["marker"]["source"].ToString();
 
-            artworkData.type = DetermineArtworkType(artworkData.sourceUrl);
+            ArtworkType? type = DetermineArtworkType(artworkData.sourceUrl);
+            if (type == null)
+            {
+                Debug.LogWarning("Skipping artwork with unsupported type: " + artworkData.sourceUrl);
+                continue;
+            }
+            artworkData.type = type.Value;
 
             if (artwork["augmented"]["audio_description"].Type != JTokenType.Null)
             {
@@ -73,7 +86,9 @@ public class ExhibitAPIDecoder : MonoBehaviour
         return artworkDataList;
     }
 
-    private static ArtworkType DetermineArtworkType(string sourceUrl)
+    // Returns null for an extension the app cannot play, so the caller skips that
+    // one artwork instead of aborting the whole exhibit.
+    private static ArtworkType? DetermineArtworkType(string sourceUrl)
     {
         if (sourceUrl.EndsWith(".gif"))
         {
@@ -91,10 +106,10 @@ public class ExhibitAPIDecoder : MonoBehaviour
         {
             return ArtworkType.Sound;
         }
-        throw new System.Exception("Unsupported artwork type for URL: " + sourceUrl);
+        return null;
     }
 
-    private static ArtworkType DetermineAugmentedType(string sourceUrl)
+    private static ArtworkType? DetermineAugmentedType(string sourceUrl)
     {
         if (sourceUrl.EndsWith(".gif"))
         {
@@ -112,6 +127,6 @@ public class ExhibitAPIDecoder : MonoBehaviour
         {
             return ArtworkType.Sound;
         }
-        throw new System.Exception("Unsupported augmented type for URL: " + sourceUrl);
+        return null;
     }
 }

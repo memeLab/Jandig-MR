@@ -85,9 +85,12 @@ public class Object3DController : MonoBehaviour
             // Define o mesmo parent do GameObject que possui este script
             scene.transform.SetParent(parent_transform, worldPositionStays: false);
 #if !UNITY_EDITOR
-            Debug.Log("Playing Animation manually on legacy mode.");
-            Animation anim = scene.GetComponent <Animation>();
-            anim.Play();
+            Animation anim = scene.GetComponent<Animation>();
+            if (anim != null)
+            {
+                Debug.Log("Playing Animation manually on legacy mode.");
+                anim.Play();
+            }
 #endif
             Debug.Log("Objeto 3d Posicionado com sucesso");
         };         
