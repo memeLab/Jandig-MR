@@ -140,7 +140,9 @@ public class GifController : MonoBehaviour
                             TextureFormat.ARGB32, false);
 
                         frame.SetPixels32(image.colors);
-                        frame.Apply();
+                        // makeNoLongerReadable drops the CPU-side copy of the pixels,
+                        // which otherwise doubles the memory of every frame.
+                        frame.Apply(false, true);
 
                         frames.Add(frame);
                         frameDelays.Add(image.SafeDelaySeconds); // More about SafeDelay below
@@ -161,5 +163,23 @@ public class GifController : MonoBehaviour
         m_gifDelayList = frameDelays;
         nowState = State.Playing;
         yield break;
+    }
+
+    // Textures created at runtime are not freed when their GameObject is destroyed,
+    // so without this every GIF of every exhibit opened stays in memory.
+    private void OnDestroy()
+    {
+        if (m_gifTextureList == null)
+        {
+            return;
+        }
+        foreach (Texture frame in m_gifTextureList)
+        {
+            if (frame != null)
+            {
+                Destroy(frame);
+            }
+        }
+        m_gifTextureList = null;
     }
 }
