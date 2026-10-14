@@ -71,32 +71,23 @@ public class SpawnObjectsScript : MonoBehaviour
                 Debug.LogError("Unsupported artwork type: " + artworkData.type);
                 break;
         }
-        if (element != null && artworkData.soundUrl != null)
+        if (element == null)
+        {
+            return null;
+        }
+        if (artworkData.soundUrl != null)
         {
             AddSoundToObject(element, artworkData.soundUrl);
         }
-        if (element != null && artworkData.audioDescriptionUrl != null)
+        if (artworkData.audioDescriptionUrl != null)
         {
             AddAudioDescriptionToObject(element, artworkData.audioDescriptionUrl);
         }
         
-        if (position != null)
-        {
-            element.transform.position = position;
-        }
-        else
-        {
-            element.transform.position = new Vector3(0, 0, 0);
-        }
-        
-        if (rotation != null)
-        {
-            element.transform.rotation = rotation;
-        }
-        else
-        {
-            element.transform.rotation = Quaternion.identity;
-        }
+        // Vector3 and Quaternion are value types, so there is no "missing" case to
+        // fall back from.
+        element.transform.position = position;
+        element.transform.rotation = rotation;
 
         artworkData.position = element.transform.position;
         artworkData.rotation = element.transform.rotation;

@@ -61,6 +61,14 @@ public class ListARExhibitsController : MonoBehaviour
         Debug.Log("Refilling exhibits cache from URL: " + updated_url);
         StartCoroutine(MakeRequest(updated_url, result =>
         {
+            if (result == null || result.results == null)
+            {
+                // MakeRequest already logged the error. Keep what is on screen and
+                // only re-enable "next" if there is still a page to retry.
+                Debug.LogError("Could not load exhibits from " + updated_url);
+                nextPageButton.GetComponent<Button>().interactable = !string.IsNullOrEmpty(nextExhibitsPageLink);
+                return;
+            }
             exhibitsCache.AddRange(result.results);
             nextExhibitsPageLink = result.next;
             nextPageButton.GetComponent<Button>().interactable = true;

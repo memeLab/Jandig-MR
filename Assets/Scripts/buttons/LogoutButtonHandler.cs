@@ -23,7 +23,15 @@ public class LogoutButtonHandler : MonoBehaviour
 
     private void OnLogoutClick()
     {
-        System.IO.File.Delete(Application.persistentDataPath + "/userInfo.json");
+        try
+        {
+            System.IO.File.Delete(Application.persistentDataPath + "/userInfo.json");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Could not remove the session file: " + ex.Message);
+            return;
+        }
         parentScreen.SetActive(false);
         onLogoutScreen.SetActive(true);
     }
